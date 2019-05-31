@@ -4,9 +4,7 @@ import './App.css';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
 import Axios from 'axios';
-import Navi from './components/Nav'
-
-import { Route } from 'react-router';
+import { Route ,Link} from 'react-router-dom';
 
 
 class App extends Component {
@@ -29,11 +27,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-         {/* <Route exact path="/" component={ Smurfs }/> */}
-        {/* <Route exact path="/smurf-form" component={ smurf-form }/> */}
-        {/* <Navi /> */}
-        <SmurfForm />
+        {/* <SmurfForm /> */}
         <Smurfs smurfs={this.state.smurfs} />
+        <Route exact path="/" component={ SmurfForm }/>
+        <Link to='/'>smurfs form</Link>
+        <Link to='/SmurfForm'>  smurfs </Link>
+
+
+
       </div>
     );
   }
