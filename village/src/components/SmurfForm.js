@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
+import { Route ,Link} from 'react-router-dom';
+import Smurfs from './Smurfs';
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -13,7 +16,10 @@ class SmurfForm extends Component {
   addSmurf = event => {
     event.preventDefault();
     // add code to create the smurf using the api
-
+    Axios
+    .post('http://localhost:3333/smurfs',this.state)
+    .then(res => console.log(res))
+    .catch(err=> console.log(err))
     this.setState({
       name: '',
       age: '',
@@ -28,6 +34,8 @@ class SmurfForm extends Component {
   render() {
     return (
       <div className="SmurfForm">
+        <Route exact path='/' Component={Smurfs} />
+        {/* <Link to='/'>here</Link>  */}
         <form onSubmit={this.addSmurf}>
           <input
             onChange={this.handleInputChange}
